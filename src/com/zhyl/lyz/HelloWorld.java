@@ -1,5 +1,8 @@
 package com.zhyl.lyz;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 public class HelloWorld {
 	
 	/*private String message;
@@ -24,7 +27,7 @@ public class HelloWorld {
 		System.out.println("destroy...");
 	}*/
 	
-	private String message1;
+	/*private String message1;
 	private String message2;
 	
 	public void setMessage1(String message1) {
@@ -38,7 +41,25 @@ public class HelloWorld {
     }
     public void getMessage2(){
         System.out.println("World Message2 : " + message2);
-    }
+    }*/
+	
+	//JSR-250×¢½âÐÎÊ½
+	private String message;
+	public void setMessage(String message){
+		this.message  = message;
+	}
+	public String getMessage(){
+	    System.out.println("Your Message : " + message);
+	    return message;
+	}
+	@PostConstruct
+	public void init(){
+	    System.out.println("Bean is going through init.");
+	}
+    @PreDestroy
+	public void destroy(){
+	    System.out.println("Bean will destroy now.");
+	}
 	
 	
 }

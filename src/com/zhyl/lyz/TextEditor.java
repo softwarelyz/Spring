@@ -1,5 +1,7 @@
 package com.zhyl.lyz;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class TextEditor {
 	
 	//基于构造函数的依赖注入
@@ -36,8 +38,8 @@ public class TextEditor {
     }*/
 	
 	
-	//自动装配 ByName
-	private SpellChecker spellChecker;
+	//自动装配 ByName、ByType
+	/*private SpellChecker spellChecker;
 	private String name;
 	public SpellChecker getSpellChecker() {
 		return spellChecker;
@@ -54,7 +56,47 @@ public class TextEditor {
 	
 	public void spellCheck() {
 	    spellChecker.checkSpelling();
-	}
+	}*/
+	
+	//构造函数自动装配
+	/*private SpellChecker spellChecker;
+    private String name;
+    public TextEditor( SpellChecker spellChecker, String name ) {
+        this.spellChecker = spellChecker;
+        this.name = name;
+    }
+    public SpellChecker getSpellChecker() {
+        return spellChecker;
+    }
+    public String getName() {
+        return name;
+    }
+    public void spellCheck() {
+        spellChecker.checkSpelling();
+    }*/
+	
+	//Autowired注解
+	//属性中
+    //@Autowired
+	private SpellChecker spellChecker;
+	
+	//构造函数中
+	@Autowired
+    public TextEditor(SpellChecker spellChecker) {
+        System.out.println("Inside TextEditor constructor." );
+        this.spellChecker = spellChecker;
+    } 
+	//方法中
+    //@Autowired
+    /*public void setSpellChecker( SpellChecker spellChecker ){
+        this.spellChecker = spellChecker;
+    }*/
+    public SpellChecker getSpellChecker( ) {
+        return spellChecker;
+    }
+    public void spellCheck() {
+        spellChecker.checkSpelling();
+    }
 	
 	
 }

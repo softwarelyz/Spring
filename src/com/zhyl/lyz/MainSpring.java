@@ -69,8 +69,34 @@ public class MainSpring {
 		jc.getAddressProp();*/
 		
 		//自动装配 ByName
-		ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
+		/*ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
 		TextEditor te = (TextEditor) context.getBean("textEditor");
-		te.spellCheck();
+		te.spellCheck();*/
+		
+		
+		//Required注解
+		/*ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
+		Student student = (Student) context.getBean("student");
+		System.out.println("name:"+student.getName());
+		System.out.println("age:"+student.getAge());*/
+		
+		
+		//Autowired注解
+		/*ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
+	    TextEditor te = (TextEditor) context.getBean("textEditor");
+	    te.spellCheck();*/
+		
+		//Qualifier注解
+		/*ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
+		Profile profile = (Profile) context.getBean("profile");
+	    profile.printAge();
+	    profile.printName();*/
+		
+		/*JSR-250注解形式*/
+		AbstractApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
+		HelloWorld obj = (HelloWorld) context.getBean("helloWorld");
+		obj.getMessage();
+		context.registerShutdownHook();
+		
 	}
 }

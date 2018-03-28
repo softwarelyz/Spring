@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd"
     default-init-method="init" 
     default-destroy-method="destroy">
+    
+    
 
    <!-- <bean id="helloWorld" class="com.zhyl.lyz.HelloWorld">
        <property name="message" value="哈哈！"/>
@@ -113,11 +118,53 @@
     </bean> -->
     
     <!-- 自动装配ByType -->
-     <bean id="textEditor" class="com.zhyl.lyz.TextEditor" autowire="byType">
+    <!-- <bean id="textEditor" class="com.zhyl.lyz.TextEditor" autowire="byType">
      	<property name="name" value="Generic Text Editor" />
-     </bean>
-     <bean id="spellChecker" class="com.zhyl.lyz.SpellChecker">
-     </bean>
+    </bean>
+    <bean id="spellChecker" class="com.zhyl.lyz.SpellChecker">
+    </bean> -->
+     
+    <!-- 构造函数自动装配 -->
+    <!-- <bean id="textEditor" class="com.zhyl.lyz.TextEditor" autowire="constructor">
+      <constructor-arg value="Generic Text Editor"/>
+    </bean>
+    <bean id="spellChecker" class="com.zhyl.lyz.SpellChecker">
+    </bean> --> 
     
+    
+    <!-- Required注解形式 -->
+    <!-- <context:annotation-config/>
+    <bean id="student" class="com.zhyl.lyz.Student">
+    	<property name="name" value="lazy"/>
+    	<property name="age"  value="20"/>
+    </bean> -->
+    
+    <!-- Autowired注解形式 -->
+    <!-- context:annotation-config/>
+    <bean id="textEditor" class="com.zhyl.lyz.TextEditor">
+    </bean>
+    <bean id="spellChecker" class="com.zhyl.lyz.SpellChecker">
+    </bean> -->
+    
+    
+    <!-- Qualifier注解形式 -->
+    <!-- <context:annotation-config/>
+    <bean id="profile" class="com.zhyl.lyz.Profile">
+    </bean>
+    <bean id="student1" class="com.zhyl.lyz.Student">
+        <property name="name"  value="Zara" />
+        <property name="age"  value="11"/>
+    </bean>
+    <bean id="student2" class="com.zhyl.lyz.Student">
+        <property name="name"  value="Nuha" />
+        <property name="age"  value="2"/>
+    </bean> -->
+    
+    <!-- JSR-250注解形式 -->
+    <context:annotation-config/>
+    <bean id="helloWorld" 
+        class="com.zhyl.lyz.HelloWorld">
+        <property name="message" value="Hello World!"/>
+    </bean>
     
 </beans>
