@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+    default-init-method="init" 
+    default-destroy-method="destroy">
+
+   <!-- <bean id="helloWorld" class="com.zhyl.lyz.HelloWorld">
+       <property name="message" value="哈哈！"/>
+   </bean> -->
+   
+   <!-- singleton方式 -->
+   <!-- <bean id="helloWorld" class="com.zhyl.lyz.HelloWorld" scope="singleton">
+   </bean> -->
+   
+   <!-- prototype方式 -->
+   <!-- <bean id="helloWorld" class="com.zhyl.lyz.HelloWorld" scope="prototype">
+   </bean> -->
+   
+   <!-- 结合init destroy方法 -->
+   <!-- <bean id="helloWorld" class="com.zhyl.lyz.HelloWorld">
+       可以在顶部直接设置init何destroy
+       init-method="init" destroy-method="destroy"
+       <property name="message1" value="Hello World!"/>
+       <property name="message2" value="Hello Second World!"/>
+   </bean> -->
+   <!-- <bean class="com.zhyl.lyz.InitHelloWorld"/> -->
+
+	<!-- Bean 定义模板 -->
+   	<!-- <bean id="beanTeamplate" abstract="true">
+		<property name="message1" value="Hello World!"/>
+		<property name="message2" value="Hello Second World!"/>
+		<property name="message3" value="Namaste India!"/>
+   	</bean>
+
+	<bean id="helloIndia" class="com.zhyl.lyz.HelloIndia" parent="beanTeamplate">
+		<property name="message1" value="beanTeamplate Hello World!"/>
+       <property name="message3" value="Namaste India!"/>
+	</bean> -->
+	
+	
+	<!-- 基于构造函数的依赖注入 -->
+	<!-- <bean id="textEditor" class="com.zhyl.lyz.TextEditor">
+		<constructor-arg ref="spellChecker"/>
+	</bean>
+	<bean id="spellChecker" class="com.zhyl.lyz.SpellChecker"/>
+ 	-->
+	<!-- <bean id="textEditor" class="com.zhyl.lyz.TextEditor">
+		<constructor-arg type="int" value="20"/>
+		<constructor-arg type="java.lang.String" value="lazy"/>
+		<constructor-arg index="0" value="22"/>
+		<constructor-arg index="1" value="Alone"/>
+	</bean> -->
+	
+	<!-- 基于设值函数的依赖注入 -->
+	<!-- <bean id="textEditor" class="com.zhyl.lyz.TextEditor">
+		<property name="spellChecker" ref="spellChecker"/>
+	</bean>
+	<bean id="spellChecker" class="com.zhyl.lyz.SpellChecker"></bean> -->
+	
+	<!-- 注入内部bean -->
+	<!-- <bean id="textEditor" class="com.zhyl.lyz.TextEditor">
+       <property name="spellChecker">
+           <bean id="spellChecker" class="com.zhyl.lyz.SpellChecker"/>
+       </property>
+    </bean> -->
+    
+    <!-- 注入集合 -->
+    <!-- <bean id="javaCollection" class="com.zhyl.lyz.JavaCollection">
+    
+	    <property name="addressList">
+	         <list>
+	            <value>INDIA</value>
+	            <value>Pakistan</value>
+	            <value>USA</value>
+	            <value>USA</value>
+	         </list>
+	    </property>
+	    <property name="addressSet">
+	         <set>
+	            <value>INDIA</value>
+	            <value>Pakistan</value>
+	            <value>USA</value>
+	            <value>USA</value>
+	         </set>
+       </property>
+       <property name="addressMap">
+	         <map>
+	            <entry key="1" value="INDIA"/>
+	            <entry key="2" value="Pakistan"/>
+	            <entry key="3" value="USA"/>
+	            <entry key="4" value="USA"/>
+	         </map>
+       </property>
+       <property name="addressProp">
+	         <props>
+	            <prop key="one">INDIA</prop>
+	            <prop key="two">Pakistan</prop>
+	            <prop key="three">USA</prop>
+	            <prop key="four">USA</prop>
+	         </props>
+       </property>
+    </bean> -->
+    
+    <!-- 自动装配ByName -->
+    <!-- <bean id="textEditor" class="com.zhyl.lyz.TextEditor" 
+      autowire="byName">
+      <property name="name" value="Generic Text Editor" />
+    </bean>
+
+    <bean id="spellChecker" class="com.zhyl.lyz.SpellChecker">
+    </bean> -->
+    
+    <!-- 自动装配ByType -->
+     <bean id="textEditor" class="com.zhyl.lyz.TextEditor" autowire="byType">
+     	<property name="name" value="Generic Text Editor" />
+     </bean>
+     <bean id="spellChecker" class="com.zhyl.lyz.SpellChecker">
+     </bean>
+    
+    
+</beans>
